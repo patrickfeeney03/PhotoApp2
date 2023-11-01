@@ -8,6 +8,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1 or /images/1.json
   def show
+
   end
 
   # GET /images/new
@@ -65,6 +66,6 @@ class ImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:title)
+      params.require(:image).permit(:title, :picture)
     end
 end

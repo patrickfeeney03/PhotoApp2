@@ -14,8 +14,13 @@
   <div>
     <%= form.label :title, style: "display: block" %>
     <%= form.text_field :title %>
+
+    <br><br>
+    <%= form.label :picture, style: "display: block" %>
+    <%= form.file_field :picture %>
   </div>
 
+  <br><br>
   <div>
     <%= form.submit %>
   </div>

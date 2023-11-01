@@ -3,5 +3,8 @@
     <strong>Title:</strong>
     <%= image.title %>
   </p>
+  <% if image.picture.attached? %>
+    <%= image_tag(image.picture)%>
+  <% end %>
 
 </div>
