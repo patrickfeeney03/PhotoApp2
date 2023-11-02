@@ -63,6 +63,10 @@ class ImagesController < ApplicationController
     end
   end
 
+  def my_images
+    @images = current_user.images
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

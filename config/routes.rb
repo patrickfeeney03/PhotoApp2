@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "images#index"
+
+  get "my_images", to: "images#my_images"
 end
