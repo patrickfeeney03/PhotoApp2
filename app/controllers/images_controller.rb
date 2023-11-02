@@ -23,7 +23,6 @@ class ImagesController < ApplicationController
   # POST /images or /images.json
   def create
     @image = Image.new(image_params)
-    resize(300, 300)
 
     respond_to do |format|
       if @image.save
@@ -57,13 +56,6 @@ class ImagesController < ApplicationController
       format.html { redirect_to images_url, notice: "Image was successfully destroyed." }
       format.json { head :no_content }
     end
-  end
-
-  def resize(width, height)
-    image_path = ActiveStorage::Blob.service.path_for(@image)
-    resized = MiniMagick::Image.open(image_path)
-    resized.resize "#{width}x#{height}!"
-    resized.write image_path
   end
 
   private
