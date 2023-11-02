@@ -20,6 +20,9 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+    unless current_user == @image.user
+      redirect_to image_path(@image), notice: 'You can only edit images you have created.'
+    end
   end
 
   # POST /images or /images.json
