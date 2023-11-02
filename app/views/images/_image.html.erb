@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-5">
             <h3 class="display-6 fw-bold"><%= image.title %></h3>
-            <p class="col-md-8 fs-4">description would go here</p>
+            <p class="col-md-8 fs-4">description would go here:   <%= image.user.id %></p>
           </div>
           <div class="col-md-7">
             <% if defined?(clickable) && clickable%>
