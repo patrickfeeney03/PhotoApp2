@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: %i[ show edit update destroy ]
   before_action lambda { resize_before_save(image_params[:picture], 600, 600) }, only: [:create, :update]
+  before_action :authenticate_user!, except: %i[show index]
 
   # GET /images or /images.json
   def index
