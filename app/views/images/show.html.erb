@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @image %>
 
 <div>
-  <%= link_to "Edit this image", edit_image_path(@image) %> |
-  <%= link_to "Back to images", images_path %>
+  <%= link_to "Edit this image", edit_image_path(@image), class: "btn btn-dark" %>
+  <%= link_to "Back to images", images_path, class: "btn btn-dark" %>
+  <br><br>
 
-  <%= button_to "Destroy this image", @image, method: :delete %>
+  <%= button_to "Destroy this image", @image, method: :delete, class: "btn btn-outline-danger" %>
 </div>
