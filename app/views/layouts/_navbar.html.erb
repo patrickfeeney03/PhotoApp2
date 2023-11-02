@@ -1,21 +1,20 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">PhotoApp</a>
+    <%= link_to "PhotoApp", root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-          <%= link_to "My Images"  %>
+          <%= link_to "My Images", my_images_path, class: "nav-link" %>
         </li>
 
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Account
           </a>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a><%= link_to "Sign In", new_user_session_path, class: "dropdown-item"%></a></li>
