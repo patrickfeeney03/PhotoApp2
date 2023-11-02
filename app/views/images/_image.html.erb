@@ -3,21 +3,18 @@
     <div class="p-5 mb-4 bg-light rounded-3">
       <div class="container-fluid">
         <div class="row">
-          <div class="col">
+          <div class="col-md-5">
             <h3 class="display-6 fw-bold"><%= image.title %></h3>
             <p class="col-md-8 fs-4">description would go here</p>
           </div>
-          <div class="col">
+          <div class="col-md-7">
             <% if defined?(clickable) && clickable%>
-              <%= link_to image_tag(image.picture), image_path(image) %>
+              <%= link_to image_tag(image.picture), image_path(image), class: "img-fluid w-100" %>
             <% else %>
-              <%= image_tag(image.picture) %>
+              <%= image_tag(image.picture, class: "img-fluid w-100") %>
             <% end %>
           </div>
         </div>
-
-
-
       </div>
     </div>
   <% end %>
