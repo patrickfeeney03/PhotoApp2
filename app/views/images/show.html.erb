@@ -1,9 +1,10 @@
 <%= render @image %>
 
 <div>
-  <%= link_to "Edit this image", edit_image_path(@image), class: "btn btn-dark" %>
   <%= link_to "Back to images", images_path, class: "btn btn-dark" %>
+  <%= link_to "Edit this image", edit_image_path(@image), class: "btn btn-dark" if current_user == @image.user %>
   <br><br>
 
-  <%= button_to "Destroy this image", @image, method: :delete, class: "btn btn-outline-danger" %>
+  <%= button_to "Destroy this image", @image, method: :delete, data: { turbo_confirm: "Are you positive?" },
+                class: "btn btn-outline-danger" if current_user == @image.user %>
 </div>

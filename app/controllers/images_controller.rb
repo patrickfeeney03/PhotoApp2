@@ -2,6 +2,7 @@ class ImagesController < ApplicationController
   before_action :set_image, only: %i[ show edit update destroy ]
   before_action lambda { resize_before_save(image_params[:picture], 600, 600) }, only: [:create, :update]
   before_action :authenticate_user!, except: %i[show index]
+  before_action :authorize_image, only: [:edit, :destroy, :update]
 
   # GET /images or /images.json
   def index
@@ -20,9 +21,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
-    unless current_user == @image.user
-      redirect_to image_path(@image), notice: 'You can only edit images you have created.'
-    end
+
   end
 
   # POST /images or /images.json
@@ -84,5 +83,14 @@ class ImagesController < ApplicationController
       .source(image_param)
       .resize_to_fit(width, height)
       .call(destination: image_param.tempfile.path)
+  end
+
+  def authorize_image
+    # Retrieve the image with the current id
+    @image = Image.find(params[:id])
+    # If the user is not the same don't allow editing
+    unless current_user == @image.user
+      redirect_to image_path(@image), notice: "You can only edit images you have created."
+    end
   end
 end
