@@ -38,9 +38,6 @@ class ImagesController < ApplicationController
 
   # PATCH/PUT /images/1 or /images/1.json
   def update
-    puts "UPDATE RAN RAN RAN"
-    puts "PARAMS: #{image_params}"
-    puts "PARAMS: #{image_params[:picture]}"
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to image_url(@image), notice: "Image was successfully updated." }
@@ -77,7 +74,6 @@ class ImagesController < ApplicationController
   def resize_before_save(image_param, width, height)
     # Return if image_param is false or nil
     return unless image_param
-    puts "RESIZING?????????????????????????????????????"
 
     ImageProcessing::MiniMagick
       .source(image_param)

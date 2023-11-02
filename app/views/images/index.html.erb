@@ -4,7 +4,7 @@
 
 <div id="images">
   <% @images.each do |image| %>
-    <%= render image %>
+    <%= render image, clickable: true %>
     <p>
       <% link_to "Show this image", image %>
     </p>
