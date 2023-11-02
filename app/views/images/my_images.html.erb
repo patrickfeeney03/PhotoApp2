@@ -1,11 +1,11 @@
-<h2 class="display-3">My Images</h2>
+<h2 class="display-1">My Images</h2>
 
 <div>
   <% if @images.empty? %>
     <p class="fs-3">You haven't published any images!</p>
   <% else %>
     <% @images.each do |image| %>
-      <%= render image %>
+      <%= render image, clickable: true %>
     <% end %>
   <% end %>
 </div>
