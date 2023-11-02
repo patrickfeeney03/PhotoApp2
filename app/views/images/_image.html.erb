@@ -1,8 +1,5 @@
 <div id="<%= dom_id image %>">
-  <p>
-    <strong>Title:</strong>
-    <%= image.title %>
-  </p>
+  <h3 class="display-6"><%= image.title %></h3>
   <% if image.picture.attached? %>
     <% if defined?(clickable) && clickable%>
       <%= link_to image_tag(image.picture), image_path(image) %>
