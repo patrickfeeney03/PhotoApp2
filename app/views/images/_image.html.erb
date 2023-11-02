@@ -4,7 +4,7 @@
     <%= image.title %>
   </p>
   <% if image.picture.attached? %>
-    <%= image_tag(image.picture) %>
+    <%= link_to image_tag(image.picture), image %>
   <% end %>
 
 </div>

@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: %i[ show edit update destroy ]
+  before_action lambda { resize_before_save(image_params[:picture], 600, 600) }, only: [:create, :update]
 
   # GET /images or /images.json
   def index
@@ -37,6 +38,9 @@ class ImagesController < ApplicationController
 
   # PATCH/PUT /images/1 or /images/1.json
   def update
+    puts "UPDATE RAN RAN RAN"
+    puts "PARAMS: #{image_params}"
+    puts "PARAMS: #{image_params[:picture]}"
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to image_url(@image), notice: "Image was successfully updated." }
@@ -59,13 +63,25 @@ class ImagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_image
-      @image = Image.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def image_params
-      params.require(:image).permit(:title, :picture)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_image
+    @image = Image.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def image_params
+    params.require(:image).permit(:title, :picture)
+  end
+
+  def resize_before_save(image_param, width, height)
+    # Return if image_param is false or nil
+    return unless image_param
+    puts "RESIZING?????????????????????????????????????"
+
+    ImageProcessing::MiniMagick
+      .source(image_param)
+      .resize_to_fit(width, height)
+      .call(destination: image_param.tempfile.path)
+  end
 end
