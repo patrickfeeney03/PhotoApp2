@@ -2,13 +2,22 @@
   <% if image.picture.attached? %>
     <div class="p-5 mb-4 bg-light rounded-3">
       <div class="container-fluid">
-        <h3 class="display-6 fw-bold"><%= image.title %></h3>
-        <p class="col-md-8 fs-4">description would go here</p>
-        <% if defined?(clickable) && clickable%>
-          <%= link_to image_tag(image.picture), image_path(image) %>
-        <% else %>
-          <%= image_tag(image.picture) %>
-        <% end %>
+        <div class="row">
+          <div class="col">
+            <h3 class="display-6 fw-bold"><%= image.title %></h3>
+            <p class="col-md-8 fs-4">description would go here</p>
+          </div>
+          <div class="col">
+            <% if defined?(clickable) && clickable%>
+              <%= link_to image_tag(image.picture), image_path(image) %>
+            <% else %>
+              <%= image_tag(image.picture) %>
+            <% end %>
+          </div>
+        </div>
+
+
+
       </div>
     </div>
   <% end %>
